@@ -9,17 +9,18 @@
 
 #include <stdio.h>
 
-main()
+int main()
 {
 	int valor;
 
 	printf("Informe um número inteiro: ");
 	scanf("%d", &valor);
 	
-	if (valor%2==0) {
+	if (valor % 2 == 0) {
 		printf("O número informado é par\n");
 	} 
 	else {
 		printf("O número informado é ímpar\n");
 	}
+	return 0;
 }
