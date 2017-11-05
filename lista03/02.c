@@ -12,7 +12,7 @@ int empilha (pilha*p, char x)
 	if (p->topo + 1 < N) {
 		++(p->topo);
 		p->dados[p->topo] = x;
-	return 1;
+		return 1;
 	}
 	return -1;
 }
