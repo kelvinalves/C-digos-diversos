@@ -16,20 +16,23 @@ typedef struct grafo {
 } vetor;
 
 incidencia* inserir(int destino);
-vetor* criar(int v);
+vetor* criar(int nome);
 void aresta(vetor* grafo, int origem, int destino);
 void imprimir(vetor* grafo);
 
 int main() {
-  int quantidade = 5;
+  int quantidade, origem = 1, destino = 1;
+  printf("Informe o número de vértices: ");
+  scanf("%d", &quantidade);
   vetor* grafo = criar(quantidade);
-  aresta(grafo, 0, 1);
-  aresta(grafo, 0, 4);
-  aresta(grafo, 1, 2);
-  aresta(grafo, 1, 3);
-  aresta(grafo, 1, 4);
-  aresta(grafo, 2, 3);
-  aresta(grafo, 3, 4);
+  while(origem > 0 && destino > 0) {
+    printf("Informe os vértices de origem e destino: ");
+    scanf("%d %d", &origem, &destino);
+    if(origem <= quantidade && destino <= quantidade)
+      aresta(grafo, origem-1, destino-1);
+    else
+      printf("Informe valores válidos\n");
+  }
   imprimir(grafo);
   return 0; 
 }
@@ -62,9 +65,9 @@ void aresta(vetor* grafo, int origem, int destino) {
 void imprimir(vetor* grafo) {
   for (int nome = 0; nome < grafo->rotulo; ++nome) { 
     incidencia* impressor = grafo->vertice[nome].lider; 
-    printf("\n Lista de adjacências do vértice %d\n Líder ", nome); 
+    printf("\n Lista de adjacências do vértice %d\n Líder ", nome+1); 
     while (impressor) { 
-      printf("-> %d", impressor->destino); 
+      printf("-> %d", impressor->destino+1); 
       impressor = impressor->proxima; 
     } 
     printf("\n"); 
