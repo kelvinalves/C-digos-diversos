@@ -11,7 +11,7 @@ int main(){
   if(vetor==NULL){
     printf("Memória insuficiente!\n");
     exit(1);
- 	}
+  }
   valores(vetor,tamanho);
   printf("Há %d potências de 2\n",quantidade(vetor,tamanho));
   free(vetor);
