@@ -6,7 +6,7 @@ void dobra(int tamanho, int **matriz){
 /*Alocação de memória de vetores multidimensionais modo A - via cast*/
     int **dobrada = malloc(ordem * sizeof(int *));
     for(int i = 0; i < ordem; i++)
-        dobrada[i] = malloc(ordem * sizeof(int **));
+        dobrada[i] = malloc(ordem * sizeof(int));
     if(dobrada == NULL){
         printf("Espaço insuficiente na memória!!\n");
         exit(1);
