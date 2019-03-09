@@ -24,10 +24,14 @@ int main() {
     scanf("%d", &n);
     while(i < n) {
         i++;
-        printf("\n%dº\nNome: ", i);
-        scanf("%s", nome);
-        printf("RA: ");
+        printf("\n%dº\nRA: ", i);
         scanf("%d", &ra);
+        /*Apagar '\n' do buffer*/
+        scanf("%*[^\n]");
+        /*Retomar aquisição*/
+        scanf("%*c");
+        printf("Nome: ");
+        scanf("%[^\n]", nome);
         printf("Nota: ");
         scanf("%lf", &nota);
         aed1 = inserir(aed1, ra, nome, nota);
@@ -77,18 +81,18 @@ turma *inserir(turma *primeiro, int ra, char *nome, double nota) {
     }
 }
 void imprimir(turma *inicio) {
-    turma *i = inicio;
-    while(i != NULL) {
-        printf("Nome: %s RA: %d Nota: %.2lf\n", i->nome, i->ra, i->nota);
-        i = i->proximo;
+    turma *index = inicio;
+    while(index != NULL) {
+        printf("Nome: %s \tRA: %d \tNota: %.2lf\n", index->nome, index->ra, index->nota);
+        index = index->proximo;
     }
 }
 void liberar_memoria(turma *inicio) {
-    turma *i = inicio;
-    while(i != NULL) {
-        i = i->proximo;
+    turma *index = inicio;
+    while(index != NULL) {
+        index = index->proximo;
         free(inicio->nome);
         free(inicio);
-        inicio = i;
+        inicio = index;
     }
 }
