@@ -29,10 +29,11 @@ int main() {
     return 0;
 }
 lista *inserir(int n, lista *inicio) {
-    lista *novo = NULL;
+    lista *novo;
     novo = malloc(sizeof(lista));
     novo->numero = n;
-    if (inicio == NULL)
+    novo->proximo = NULL;
+    if(inicio == NULL)
         return novo;
     lista *atual = inicio;
     while(atual->proximo != NULL)
@@ -42,14 +43,14 @@ lista *inserir(int n, lista *inicio) {
 }
 void imprimir(lista *inicio) {
     lista *index = inicio;
-    while (index->proximo != NULL) {
+    while (index != NULL) {
         printf("\t%d", index->numero);
         index = index->proximo;
     }
 }
 void desalocar(lista *inicio) {
     lista *index = inicio;
-    while (index->proximo != NULL) {
+    while (index != NULL) {
         index = index->proximo;
         free(inicio);
         inicio = index;
