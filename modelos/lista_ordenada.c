@@ -44,17 +44,12 @@ lista *inserir(int n, lista *inicio) {
     return inicio;
 }
 void imprimir(lista *inicio) {
-    lista *indice = inicio;
-    while (indice != NULL) {
-        printf("\t%d", indice->numero);
-        indice = indice->proximo;
-    }
+    if (inicio == NULL) return;
+    printf("\t%d", inicio->numero);
+    imprimir(inicio->proximo);
 }
 void desalocar(lista *inicio) {
-    lista *indice = inicio;
-    while (indice != NULL) {
-        indice = indice->proximo;
-        free(inicio);
-        inicio = indice;
-    }
+    if (inicio == NULL) return;
+    desalocar(inicio->proximo);
+    free(inicio);
 }
