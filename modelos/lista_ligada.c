@@ -8,6 +8,18 @@ typedef struct bloco
 }
 lista;
 
+lista* criar(int);
+lista* inserir(int, lista*);
+void imprimir(lista*);
+void libertar(lista*);
+void menu();
+
+int main()
+{
+    menu();
+    return 0;
+}
+
 lista* criar(int valor)
 {
     lista* novo = malloc(sizeof(lista));
@@ -77,11 +89,4 @@ void menu()
     
     if (primeiro)
         libertar(primeiro);
-}
-
-int main()
-{
-    menu();
-
-    return 0;
 }
